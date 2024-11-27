@@ -1,1 +1,1 @@
-Sitemap: https://MarcRodriguez21.github.io/probamosQuarto/sitemap.xml
+Sitemap: https://MarcRodriguez21.github.io/DevOps_PRA/sitemap.xml
