@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>probamosQuarto</title>
+<title>my-quarto-site – probamosQuarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -123,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -146,15 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#que-hacemos-con-order" id="toc-que-hacemos-con-order" class="nav-link active" data-scroll-target="#que-hacemos-con-order">Que hacemos con Order?</a>
-  <ul class="collapse">
-  <li><a href="#declarar-order-como-una-clase-abstracta" id="toc-declarar-order-como-una-clase-abstracta" class="nav-link" data-scroll-target="#declarar-order-como-una-clase-abstracta">1. Declarar <code>Order</code> como una <strong>clase abstracta</strong></a></li>
-  <li><a href="#declarar-order-como-una-interfaz" id="toc-declarar-order-como-una-interfaz" class="nav-link" data-scroll-target="#declarar-order-como-una-interfaz">2. Declarar <code>Order</code> como una <strong>interfaz</strong></a></li>
-  <li><a href="#dividir-y-crear-una-interfaz-y-una-clase-abstracta" id="toc-dividir-y-crear-una-interfaz-y-una-clase-abstracta" class="nav-link" data-scroll-target="#dividir-y-crear-una-interfaz-y-una-clase-abstracta">3. Dividir y crear una <strong>interfaz y una clase abstracta</strong></a></li>
-  <li><a href="#dejarla-como-clase-normal-y-sellarla-sealed" id="toc-dejarla-como-clase-normal-y-sellarla-sealed" class="nav-link" data-scroll-target="#dejarla-como-clase-normal-y-sellarla-sealed">4. Dejarla como <strong>clase normal y sellarla</strong> (sealed)</a></li>
-  <li><a href="#implementar-records" id="toc-implementar-records" class="nav-link" data-scroll-target="#implementar-records">5. Implementar <strong>records</strong></a></li>
-  <li><a href="#resumen-rápido" id="toc-resumen-rápido" class="nav-link" data-scroll-target="#resumen-rápido">Resumen rápido</a></li>
-  </ul></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
   </ul>
 </nav>
     </div>
@@ -163,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">probamosQuarto</h1>
+<h1 class="title">my-quarto-site</h1>
 </div>
 
 
@@ -180,171 +138,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="que-hacemos-con-order" class="level1">
-<h1>Que hacemos con Order?</h1>
-<p>Tenemos una clase <code>Order</code> que es una clase normal, de la que deriban 3 clases <code>Order</code>: <code>TakeAwayOrder</code> <code>EatInOrderRestaurant</code> y <code>ShippingOrder</code>. Entonces teniendo en cuenta la futura escalabilidad, la eficiencia y la mantenibilidad del proyecto deberiamos barajar varias opciones para sintetizar la clase order y declararla de la mejor forma posible.</p>
-<ol type="1">
-<li><p>Tendriamos la opción de declararla como una clase abstracta.</p></li>
-<li><p>Tendriamos la opción de declararla como una interfaz</p></li>
-<li><p>Tendriamos la opción de dividirla y crear una interfaz y una clase abstracta</p></li>
-<li><p>Implementar la opción de dejarla como clase normal y para que no escale hacia abajo y crear seals.</p></li>
-<li><p>Impelentar records.</p></li>
-</ol>
-<p>Ahora bien, en que posibles casos nos iria mejor una opción u otra? Pues vamos a descubrirlo.</p>
-<section id="declarar-order-como-una-clase-abstracta" class="level2">
-<h2 class="anchored" data-anchor-id="declarar-order-como-una-clase-abstracta">1. Declarar <code>Order</code> como una <strong>clase abstracta</strong></h2>
-<ul>
-<li><p><strong>Cuándo lo usariamos</strong>: Si <code>Order</code> tiene comportamiento o atributos comunes que sus subclases necesitan (como métodos o atributos compartidos), una clase abstracta es buena opción. Esto también asegura que <code>Order</code> no se pueda instanciar directamente, obligando a usar una de sus subclases.</p></li>
-<li><p><strong>Ventajas</strong>:</p>
-<ul>
-<li>Puedes implementar métodos compartidos que serán heredados por las subclases.</li>
-<li>Permite tener código común para evitar duplicación.</li>
-<li>Facilita la escalabilidad, ya que puedes añadir métodos o atributos comunes a las órdenes en una sola clase.</li>
-</ul></li>
-<li><p><strong>Desventajas</strong>:</p>
-<ul>
-<li><p>Java solo permite herencia simple, así que si una subclase necesita heredar de otra clase, esto limitaría su flexibilidad.</p>
-<p><strong>Ejemplo:</strong> <em>Imagina que quieres crear una clase <code>OnlineOrder</code> que herede tanto de <code>Order</code> (para obtener todos los métodos de pedido) como de otra clase <code>Trackable</code> que tenga lógica de rastreo.</em></p>
-<p><em>En este ejemplo, <strong>Java no permite heredar de ambas clases <code>Order</code> y <code>Trackable</code> al mismo tiempo</strong>. Esto limita la flexibilidad, ya que no puedes reutilizar la funcionalidad de <code>Trackable</code> en <code>OnlineOrder</code> a través de la herencia múltiple.</em></p></li>
-<li><p>Puede no ser la mejor opción si tienes muchas subclases específicas y muy diferentes entre sí, ya que se podría perder claridad al tratar de abarcar demasiado en <code>Order</code>.</p></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="declarar-order-como-una-interfaz" class="level2">
-<h2 class="anchored" data-anchor-id="declarar-order-como-una-interfaz">2. Declarar <code>Order</code> como una <strong>interfaz</strong></h2>
-<ul>
-<li><p><strong>Cuándo la usariamos</strong>: Si <code>Order</code> no necesita guardar información específica (como variables o datos compartidos entre sus subclases) ni realizar tareas complejas, y solo queremos que actúe como una “lista de instrucciones” para decirle a cada tipo de orden qué métodos debe tener, una interfaz es la mejor opción.</p>
-<p>En otras palabras, una interfaz <code>Order</code> sirve para <strong>definir qué métodos</strong> deben tener todas las órdenes (como <code>procesarPedido()</code> o <code>cancelarPedido()</code>), <strong>sin implementar</strong> cómo deben funcionar esos métodos.</p></li>
-<li><p><strong>Ventajas</strong>:</p>
-<ul>
-<li>Las subclases pueden implementar múltiples interfaces, dándote más flexibilidad.</li>
-<li>Buena opción si <code>Order</code> define solo comportamientos (métodos) y no necesita almacenar datos o lógica compartida.</li>
-</ul></li>
-<li><p><strong>Desventajas</strong>:</p>
-<ul>
-<li><p>Las interfaces no pueden tener variables de instancia (aunque Java permite métodos por defecto), así que cualquier lógica común tendrá que implementarse en cada subclase o en una clase de utilidad.</p></li>
-<li><p>Cuando usas una <strong>interfaz</strong> en lugar de una clase abstracta, no puedes implementar directamente ningún método con lógica común dentro de la interfaz (solo puedes definir el método). Esto significa que, si todas las subclases necesitan la misma lógica, cada una tiene que <strong>implementar esa lógica de manera repetida</strong>.</p>
-<h3 id="ejemplo-para-entenderlo" class="anchored">Ejemplo para entenderlo</h3>
-<p>Imagina que tienes una interfaz <code>Order</code> con un método <code>calculateTotal()</code> que todas las órdenes deben tener, y todas las subclases (<code>TakeAwayOrder</code>, <code>EatInOrderRestaurant</code>, <code>ShippingOrder</code>) necesitan calcular el total de la misma manera. Si <code>Order</code> es una interfaz, <strong>cada subclase tiene que implementar <code>calculateTotal()</code></strong> con la misma lógica.</p>
-<h3 id="por-qué-es-menos-eficiente" class="anchored">¿Por qué es menos eficiente?</h3>
-<ol type="1">
-<li><p><strong>Duplicación de código</strong>: La lógica de <code>calculateTotal()</code> está repetida en cada subclase, lo que significa más código a mantener. Si necesitas cambiar la lógica de cálculo, tendrías que actualizarla en todas las subclases, lo cual es propenso a errores.</p></li>
-<li><p><strong>Mayor consumo de memoria y procesamiento</strong>: Cada subclase tiene su propia copia del método, lo cual consume más memoria. Además, si muchas subclases ejecutan la misma lógica por separado, se genera una pequeña sobrecarga en rendimiento.</p></li>
-</ol></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="dividir-y-crear-una-interfaz-y-una-clase-abstracta" class="level2">
-<h2 class="anchored" data-anchor-id="dividir-y-crear-una-interfaz-y-una-clase-abstracta">3. Dividir y crear una <strong>interfaz y una clase abstracta</strong></h2>
-<ul>
-<li><p><strong>Cuándo lo usarlamos</strong>: Si tienes una clase <code>Order</code> que necesita:</p>
-<ol type="1">
-<li><strong>Lógica común</strong> (como métodos que todas las órdenes necesitan y que funcionan de la misma manera para todas).</li>
-<li><strong>Métodos específicos</strong> que cada subclase debe implementar a su manera.</li>
-</ol>
-<p>Entonces puedes usar <strong>una interfaz y una clase abstracta juntas</strong>.</p>
-<h3 id="cómo-funciona-este-enfoque" class="anchored">Cómo funciona este enfoque</h3>
-<ul>
-<li><p><strong>Interfaz</strong>: Define qué métodos debe tener cada tipo de <code>Order</code>, sin decir cómo deben funcionar esos métodos. Solo establece la “lista de tareas” que cada orden debe cumplir.</p></li>
-<li><p><strong>Clase abstracta</strong>: Implementa la lógica común que todas las órdenes comparten y guarda los atributos o datos que serán iguales para todas. También puede “heredar” los métodos de la interfaz, de modo que las subclases tengan la “lista de tareas” de la interfaz más la lógica común.</p></li>
-</ul>
-<h3 id="ejemplo-simple" class="anchored">Ejemplo simple</h3>
-<p>Supón que tienes una interfaz <code>OrderActions</code> y una clase abstracta <code>OrderBase</code>:</p>
-<ol type="1">
-<li><p><strong>Interfaz <code>OrderActions</code></strong>: Define los métodos que cada orden debe tener, como <code>calculateTotal()</code>.</p></li>
-<li><p><strong>Clase abstracta <code>OrderBase</code></strong>: Contiene la lógica que será igual para todas las órdenes y guarda datos comunes (como el precio). Además, usa la interfaz para asegurarse de que cada subclase implemente los métodos definidos en <code>OrderActions</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> OrderActions <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> <span class="fu">calculateTotal</span><span class="op">();</span>  <span class="co">// "Todas las orders tendran este método"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// La clase abstracta implementa lógica común y guarda datos</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">abstract</span> <span class="kw">class</span> OrderBase <span class="kw">implements</span> OrderActions <span class="op">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> basePrice<span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">OrderBase</span><span class="op">(</span><span class="dt">double</span> basePrice<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">basePrice</span> <span class="op">=</span> basePrice<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getBasePrice</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> basePrice<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Subclase TakeAwayOrder</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TakeAwayOrder <span class="kw">extends</span> OrderBase <span class="op">{</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">TakeAwayOrder</span><span class="op">(</span><span class="dt">double</span> basePrice<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>basePrice<span class="op">);</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">calculateTotal</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">getBasePrice</span><span class="op">()</span> <span class="op">*</span> <span class="fl">1.1</span><span class="op">;</span> <span class="co">// Lógica específica para calcular total</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol></li>
-<li><p><strong>Ventajas</strong>:</p>
-<ul>
-<li>Combina la flexibilidad de las interfaces con la reutilización de la clase abstracta.</li>
-<li>Permite separar los métodos abstractos (definidos en la interfaz) de la implementación concreta (en la clase abstracta).</li>
-<li>Esto facilita la escalabilidad, ya que puedes añadir más interfaces según cambien los requerimientos.</li>
-</ul></li>
-<li><p><strong>Desventajas</strong>:</p>
-<ul>
-<li>Complejidad adicional, ya que ahora hay dos entidades para representar <code>Order</code>.</li>
-<li>Puede ser excesivo si <code>Order</code> no tiene muchos métodos ni atributos compartidos.</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="dejarla-como-clase-normal-y-sellarla-sealed" class="level2">
-<h2 class="anchored" data-anchor-id="dejarla-como-clase-normal-y-sellarla-sealed">4. Dejarla como <strong>clase normal y sellarla</strong> (sealed)</h2>
-<ul>
-<li><p><strong>Cuándo lo usariamos</strong>: Si quieres que <code>Order</code> sea extensible solo a un conjunto específico de subclases (como <code>TakeAwayOrder</code>, <code>EatInOrderRestaurant</code>, y <code>ShippingOrder</code>), una clase sellada es una opción excelente en Java 17+.</p></li>
-<li><p><strong>Ventajas</strong>:</p>
-<ul>
-<li>Permite restringir qué subclases pueden derivarse de <code>Order</code>, lo cual puede ser útil para la escalabilidad y la seguridad del diseño.</li>
-<li>Mantiene <code>Order</code> como una clase concreta, evitando instancias fuera del conjunto limitado de subclases especificadas.</li>
-<li>Facilita la mantenibilidad, ya que no necesitas preocuparte por la introducción de nuevas subclases inesperadas.</li>
-</ul></li>
-<li><p><strong>Desventajas</strong>:</p>
-<ul>
-<li>Limita la flexibilidad para futuras extensiones; si en el futuro necesitas más subclases, la clase <code>Order</code> tendrá que modificarse.</li>
-<li>Solo compatible con versiones modernas de Java.</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="implementar-records" class="level2">
-<h2 class="anchored" data-anchor-id="implementar-records">5. Implementar <strong>records</strong></h2>
-<ul>
-<li><p><strong>Cuándo lo usariamos</strong>: Si <code>Order</code> es principalmente un contenedor de datos sin lógica o comportamiento, los records pueden ser una opción sencilla. Sería una buena opción si <code>Order</code> solo tiene campos y métodos simples para acceder a ellos, sin necesidad de personalizar su comportamiento.</p></li>
-<li><p><strong>Ventajas</strong>:</p>
-<ul>
-<li>Sintaxis simple y menor código, ya que los records manejan automáticamente <code>equals</code>, <code>hashCode</code>, y <code>toString</code>.</li>
-<li>Inmutabilidad por defecto, lo que es útil si no quieres que <code>Order</code> cambie una vez creado.</li>
-</ul></li>
-<li><p><strong>Desventajas</strong>:</p>
-<ul>
-<li>Limitado en términos de funcionalidad: los records están diseñados para ser simples contenedores de datos, por lo que no se pueden añadir comportamientos complejos.</li>
-<li>Puede no ser una buena opción si <code>Order</code> necesita tener subclases con diferentes comportamientos.</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="resumen-rápido" class="level2">
-<h2 class="anchored" data-anchor-id="resumen-rápido">Resumen rápido</h2>
-<ul>
-<li><strong>Clase abstracta</strong>: Usar si <code>Order</code> tiene lógica compartida entre subclases.</li>
-<li><strong>Interfaz</strong>: Usar si <code>Order</code> solo define métodos sin necesidad de lógica compartida.</li>
-<li><strong>Interfaz + clase abstracta</strong>: Usar para combinar flexibilidad y reutilización de código compartido.</li>
-<li><strong>Clase sellada</strong>: Usar si solo quieres permitir un conjunto específico de subclases.</li>
-<li><strong>Records</strong>: Usar si <code>Order</code> es un simple contenedor de datos sin lógica ni subclases adicionales.</li>
-</ul>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

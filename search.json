@@ -49,6 +49,20 @@
     "text": "Clase abstracta: Usar si Order tiene lógica compartida entre subclases.\nInterfaz: Usar si Order solo define métodos sin necesidad de lógica compartida.\nInterfaz + clase abstracta: Usar para combinar flexibilidad y reutilización de código compartido.\nClase sellada: Usar si solo quieres permitir un conjunto específico de subclases.\nRecords: Usar si Order es un simple contenedor de datos sin lógica ni subclases adicionales."
   },
   {
+    "objectID": "my-quarto-site.html",
+    "href": "my-quarto-site.html",
+    "title": "my-quarto-site",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "my-quarto-site.html#quarto",
+    "href": "my-quarto-site.html#quarto",
+    "title": "my-quarto-site",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
