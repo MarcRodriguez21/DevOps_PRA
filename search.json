@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "my-quarto-site",
     "section": "",
-    "text": "Warning\n\n\n\nThis is an important note.\nprobamos la automatización\ngraph LR\n      A[Client] --&gt; B[Load Balancer]\n      B --&gt; C[Server1]\n      B --&gt; D[Server2]"
+    "text": "Warning\n\n\n\nThis is an important note.\ngraph LR\n      A[Client] --&gt; B[Load Balancer]\n      B --&gt; C[Server1]\n      B --&gt; D[Server2]"
   },
   {
     "objectID": "index.html#declarar-order-como-una-clase-abstracta",
